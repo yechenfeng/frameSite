@@ -1,4 +1,4 @@
-@import "variables";
+@import "variables"; // 导入相关scss，_下划线开头的scss，不会进行单独编译
 @import "mixins";
 @import "base";
 @import "navbar";
@@ -10,3 +10,9 @@
 @import "bottom";
 @import "accordion";
 @import "utility";
+
+// $page-backgroud: #6435c9;
+//
+// body {
+//     background: $page-backgroud;
+// }
