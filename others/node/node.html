@@ -1,0 +1,9 @@
+<!-- mac 登录服务器 -->
+ssh tomcat@192.168.221.216  howbuy2015
+yes
+cd /usr
+cd local
+cd tomcat-cgi
+cd logs
+tail -f catalina.out
+tail -f catalina.out |grep cgi/simu/
