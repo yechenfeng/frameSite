@@ -135,6 +135,23 @@ fileReadStream.on('data', (chunk) => {
 // 🍌🍌🍌 链式使用 pipe<br />
 // 🍠 【HTTP】<br />
 // 🍌🍌🍌 request<br />
+const http = require('http');
+var options = {
+    protocol: 'http:',
+    hostname: 'api.douban.com',
+    port: '80',
+    method: 'GET',
+    path: '/v2/movie/top250'
+};
+var request2 = http.request(options, (response) => {
+    console.log(response);
+    console.log(response.statusCode);
+    console.log(response.headers);
+});
+request2.on('error', (error) =>{
+    console.log(error);
+});
+request2.end();
 // 🍌🍌🍌 利用请求回来的数据<br />
 // 🍌🍌🍌 创建服务器<br />
 //
