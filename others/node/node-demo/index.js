@@ -9,7 +9,7 @@
     // [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
     // nvm ls-remote(列出当前网上所有node版本)
     // 安装
-        // nvm install v8.3.0(安装制定版本)
+        // nvm install v8.3.0(安装指定版本)
         // nvm install --lts(安装最新稳定版本)
         // nvm install node(安装最新版本)
     // nvm ls(查看系统安装的所有node)
@@ -17,11 +17,11 @@
     // nvm use v6.11.0(切换node版本)
 // 🍎🍎🍎 创建 Node.js 项目<br />
 // npm init(创建package.son文件)
-// npm init -y(创建使用默认配置的package.son文件)
+// npm init -y(创建使用默认配置的package.json文件)
 // rm -rf package.json(删除文件)
 // npm install -g yarn(facebook替代npm的工具)
     // yarn init(创建package.son文件)
-console.log('hello node ~')
+console.log('hello node ~');
 // 🍎🍎🍎 使用不同版本的 Node.js<br />
 // nvm run v6.11.0 index.js(使用此版本运行js)
 // nvm exec v6.11.0 node -v(使用此版本执行命令)
@@ -30,23 +30,88 @@ console.log('hello node ~')
 // nvm use(切换node版本为.nvmrc中的node配置版本执行命令)
 // 🍠 【使用模块】<br />
 // 🍎🍎🍎 使用内置的 Node.js 模块<br />
+const os = require('os');
+console.log(os.hostname());
 // 🍎🍎🍎 安装第三方 Node.js 模块<br />
+// 例如，安装http请求模块
+// npm install request --save
+// 或
+// yarn add request
+    // modules有很多依赖，所以会有很多模块
 // 🍎🍎🍎 使用第三方 Node.js 模块<br />
+const request = require('request');
+// request({
+//     url: 'http://api.douban.com/v2/movie/top250',
+//     json: true
+// }, (error, response, body) => {
+//     console.log(JSON.stringify(body, null, 2));
+// });
 // 🍎🍎🍎 创建与使用自定义 Node.js 模块<br />
+const greeting = require('./src/greeting');
+greeting.hello();
 // 🍠 【项目】<br />
 // 🍎🍎🍎 nodemon：监视应用的变化自动重启应用<br />
+// 安装监视模块（模式：开发依赖）
+    // yarn add nodemon --dev
+// 监视文件，直观写法
+    // ./node_modules/.bin/nodemon index.js
+// 初始化，简易写法
+    // "scripts": {
+        // "start": "./node_modules/.bin/nodemon index.js"
+    // },
+// 初始化，简易用法
+// npm start
 // 🍎🍎🍎 Node.js 项目的版本控制<br />
+// 安装 package.json 中的工具
+    // npm install
+// 安装 yarn.lock 中的工具
+    // yarn install
+// 版本控制
+    // git init
+    // 添加忽略文件列表（不提交至仓库） .gieignore
+    // git add .
+    // git status
+    // git commit -m 'init'
 //
 // 🍌🍌🍌🍌🍌🍌🍌🍌🍌 02 Node.js 核心模块 🍌🍌🍌🍌🍌🍌🍌🍌🍌<br />
 // 🍠 【准备】<br />
 // 🍌🍌🍌 准备<br />
+// npm start
 // 🍠 【Events】<br />
 // 🍌🍌🍌 Events<br />
+// 发布订阅模式
+// 电视剧有更新，用户收到通知，决定是否观看
 // 🍌🍌🍌 使用事件：EventEmitter<br />
+const EventEmitter = require('events');
+class Player extends EventEmitter {};
+var player = new Player();
+player.on('play', () => { // play 就是事件
+    console.log('正在播放');
+});
+player.emit('play');
 // 🍌🍌🍌 事件的参数<br />
+player.on('play2', (track) => {
+    console.log(`正在播放：${track}`);
+});
+player.emit('play2', '野子');
 // 🍌🍌🍌 只执行一次的事件监听器<br />
+player.once('play3', (track) => { // once 只执行一次的事件监听器
+    console.log(`正在播放：${track}`);
+});
+player.emit('play3', '野子');
+player.emit('play3', '青花');
 // 🍠 【File System】<br />
 // 🍌🍌🍌 得到文件与目录的信息：stat<br />
+const fs = require('fs');
+fs.stat('index.js', (error, stats) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(stats);
+        console.log(`是否是文件：${stats.isFile()}`);
+        console.log(`是否是目录：${stats.isDirectory()}`);
+    }
+});
 // 🍌🍌🍌 创建一个目录：mkdir<br />
 // 🍌🍌🍌 创建文件并写入内容：writeFile, appendFile<br />
 // 🍌🍌🍌 读取文件里的内容：readFile<br />
@@ -55,6 +120,15 @@ console.log('hello node ~')
 // 🍌🍌🍌 删除目录与文件：rmdir, unlink<br />
 // 🍠 【Stream】<br />
 // 🍌🍌🍌 读取文件流<br />
+const fs2 = require('fs');
+var fileReadStream = fs2.createReadStream('data.json');
+var count = 0;
+fileReadStream.once('data', (chunk) => {
+    console.log(chunk);
+});
+fileReadStream.on('data', (chunk) => {
+    console.log(`${++count} 接收到：${chunk.length}`);
+});
 // 🍌🍌🍌 可读流的事件<br />
 // 🍌🍌🍌 可写的文件流<br />
 // 🍌🍌🍌 pipe<br />
@@ -174,17 +248,17 @@ console.log('hello node ~')
 //
 // 😤😤😤😤😤😤😤😤😤 11 Node.js：基于 Token 的身份验证 😤😤😤😤😤😤😤😤😤<br />
 // 🍠 【介绍与准备】<br />
-// 🍇🍇🍇 身份验证<br />
-// 🍇🍇🍇 准备<br />
+// 😤😤😤 身份验证<br />
+// 😤😤😤 准备<br />
 // 🍠 【用户模型】<br />
-// 🍇🍇🍇 用户模型<br />
-// 🍇🍇🍇 用户路由与控制器<br />
+// 😤😤😤 用户模型<br />
+// 😤😤😤 用户路由与控制器<br />
 // 🍠 【注册】<br />
-// 🍇🍇🍇 注册用户<br />
-// 🍇🍇🍇 hash 用户密码<br />
-// 🍇🍇🍇 bcrypt：加 salt 的 hash<br />
-// 🍇🍇🍇 存储 hash 之后的密码<br />
+// 😤😤😤 注册用户<br />
+// 😤😤😤 hash 用户密码<br />
+// 😤😤😤 bcrypt：加 salt 的 hash<br />
+// 😤😤😤 存储 hash 之后的密码<br />
 // 🍠 【身份验证】<br />
-// 🍇🍇🍇 身份验证与签发 Token<br />
-// 🍇🍇🍇 身份验证的 Middleware<br />
+// 😤😤😤 身份验证与签发 Token<br />
+// 😤😤😤 身份验证的 Middleware<br />
 //

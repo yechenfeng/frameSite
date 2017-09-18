@@ -2,5 +2,14 @@
   "name": "node-demo",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+      "start": "./node_modules/.bin/nodemon index.js"
+  },
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
 }

@@ -1,0 +1,30 @@
+{
+    "body": {
+        "totalAmt": "309.04",
+        "totalProfit": "0.19",
+        "totalProfitDate": "20170918",
+        "notUpdateNavNum": "1",
+        "fundNum": "9",
+        "isCalculation": "0",
+        "fundAssetAmt": "308.94",
+        "regularAmt": "0",
+        "balanceAmt": "0.1",
+        "yesterdayIncome": "0",
+        "navDt": "20170917",
+        "unconfirmAmt": "0",
+        "unpaidIncome": "0",
+        "paidIncome": "0.00",
+        "settledAmt": "15.76",
+        "currentIncome": "8.05",
+        "simuFundCount": "0",
+        "simuFundAssetAmt": "0",
+        "hqPlusTotalAmt": "115.34",
+        "hqPlusCurrentIncome": "3.34",
+        "hqPlusTotalIncome": "3.34",
+        "hqPlusDayIncome": "0.01",
+        "unConfirmVolNum": "0",
+        "unConfirmTransfer": null
+    },
+    "desc": "成功",
+    "code": "0000"
+}
