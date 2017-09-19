@@ -21,7 +21,7 @@
         // rm -rf package.json(删除文件)
         // npm install -g yarn(facebook替代npm的工具)
             // yarn init(创建package.son文件)
-        console.log('hello node ~');
+        console.log('======================== hello node ========================');
 // 🍎🍎🍎 使用不同版本的 Node.js<br />
         // nvm run v6.11.0 index.js(使用此版本运行js)
         // nvm exec v6.11.0 node -v(使用此版本执行命令)
@@ -31,7 +31,7 @@
         // 🍠 【使用模块】<br />
 // 🍎🍎🍎 使用内置的 Node.js 模块<br />
         const os = require('os');
-        console.log(os.hostname());
+        console.log('******' + os.hostname());
         // 🍎🍎🍎 安装第三方 Node.js 模块<br />
         // 例如，安装http请求模块
         // npm install request --save
@@ -44,7 +44,7 @@
         //     url: 'http://api.douban.com/v2/movie/top250',
         //     json: true
         // }, (error, response, body) => {
-        //     console.log(JSON.stringify(body, null, 2));
+        //     console.log('******' + JSON.stringify(body, null, 2));
         // });
 // 🍎🍎🍎 创建与使用自定义 Node.js 模块<br />
         const greeting = require('./src/greeting');
@@ -72,7 +72,7 @@
             // git add .
             // git status
             // git commit -m 'init'
-// 
+//
 // 🍌🍌🍌🍌🍌🍌🍌🍌🍌 02 Node.js 核心模块 🍌🍌🍌🍌🍌🍌🍌🍌🍌<br />
 // 🍠 【准备】<br />
 // 🍌🍌🍌 准备<br />
@@ -86,17 +86,17 @@
         class Player extends EventEmitter {};
         var player = new Player();
         player.on('play', () => { // play 就是事件
-            console.log('正在播放');
+            console.log('******' + '正在播放');
         });
         player.emit('play');
 // 🍌🍌🍌 事件的参数<br />
         player.on('play2', (track) => {
-            console.log(`正在播放：${track}`);
+            console.log('******' + `正在播放：${track}`);
         });
         player.emit('play2', '野子');
 // 🍌🍌🍌 只执行一次的事件监听器<br />
         player.once('play3', (track) => { // once 只执行一次的事件监听器
-            console.log(`正在播放：${track}`);
+            console.log('******' + `正在播放：${track}`);
         });
         player.emit('play3', '野子');
         player.emit('play3', '青花');
@@ -105,35 +105,86 @@
         const fs = require('fs');
         fs.stat('index.js', (error, stats) => {
             if (error) {
-                console.log(error);
+                console.log('******' + error);
             } else {
-                console.log(stats);
-                console.log(`是否是文件：${stats.isFile()}`);
-                console.log(`是否是目录：${stats.isDirectory()}`);
+                console.log('******' + stats);
+                console.log('******' + `是否是文件：${stats.isFile()}`);
+                console.log('******' + `是否是目录：${stats.isDirectory()}`);
             }
         });
 // 🍌🍌🍌 创建一个目录：mkdir<br />
-        //
+        fs.mkdir('logs', (error) => {
+            if (error) {
+                console.log('******' + error);
+            } else {
+                console.log('******' + '通过mkdir成功创建目录：logs');
+            }
+        });
 // 🍌🍌🍌 创建文件并写入内容：writeFile, appendFile<br />
-        //
+        fs.writeFile('logs/greeting.log', 'hello \n', (error) => {
+            if (error) {
+                console.log('******' + error);
+            } else {
+                console.log('******' + '通过writeFile成功写入文件');
+            }
+        });
+        fs.appendFile('logs/greeting.log', 'hola \n', (error) => {
+            if (error) {
+                console.log('******' + error);
+            } else {
+                console.log('******' + '通过appendFile成功写入文件');
+            }
+        });
 // 🍌🍌🍌 读取文件里的内容：readFile<br />
-        //
+        fs.readFile('logs/greeting.log', 'utf-8', (error, data) => {
+            if (error) {
+                console.log('******' + error);
+            } else {
+                console.log('******' + '通过readFile读取文件里的内容：' + data);
+            }
+        });
 // 🍌🍌🍌 列出目录里的东西：readdir<br />
-        //
+        fs.readdir('logs', (error, files) => {
+            if (error) {
+                console.log('******' + error);
+            } else {
+                console.log('******' + '通过readdir列出目录里的东西：' + files);
+            }
+        });
 // 🍌🍌🍌 重命名目录或文件：rename<br />
-        //
+        fs.rename('logs/greeting.log', 'logs/hello.log', (error) => {
+            if (error) {
+                console.log('******' + error);
+            } else {
+                console.log('******' + '通过rename重命名目录或文件成功');
+            }
+        });
 // 🍌🍌🍌 删除目录与文件：rmdir, unlink<br />
-        //
+    fs.readdirSync('logs').map((file) => {
+        fs.unlink(`logs/${file}`, (error) => {
+            if (error) {
+                console.log('******' + error);
+            } else {
+                console.log('******' + `通过unlink删除文件：${file}`);
+            }
+        });
+    });
+    fs.rmdir('logs', (error) => {
+        if (error) {
+            console.log('******' + error);
+        } else {
+            console.log('******' + '通过rmdir删除目录');
+        }
+    });
 // 🍠 【Stream】<br />
 // 🍌🍌🍌 读取文件流<br />
-const fs2 = require('fs');
-var fileReadStream = fs2.createReadStream('data.json');
+var fileReadStream = fs.createReadStream('data.json');
 var count = 0;
 fileReadStream.once('data', (chunk) => {
-    console.log(chunk);
+    console.log('******' + chunk);
 });
 fileReadStream.on('data', (chunk) => {
-    console.log(`${++count} 接收到：${chunk.length}`);
+    console.log('******' + `${++count} 接收到：${chunk.length}`);
 });
 // 🍌🍌🍌 可读流的事件<br />
         //
@@ -154,12 +205,12 @@ fileReadStream.on('data', (chunk) => {
             path: '/v2/movie/top250'
         };
         // var request2 = http.request(options, (response) => {
-        //     console.log(response);
-        //     console.log(response.statusCode);
-        //     console.log(response.headers);
+        //     console.log('******' + response);
+        //     console.log('******' + response.statusCode);
+        //     console.log('******' + response.headers);
         // });
         // request2.on('error', (error) =>{
-        //     console.log(error);
+        //     console.log('******' + error);
         // });
         // request2.end();
 // 🍌🍌🍌 利用请求回来的数据<br />
