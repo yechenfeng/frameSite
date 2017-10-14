@@ -178,14 +178,14 @@
     });
 // 🍠 【Stream】<br />
 // 🍌🍌🍌 读取文件流<br />
-var fileReadStream = fs.createReadStream('data.json');
-var count = 0;
-fileReadStream.once('data', (chunk) => {
-    console.log('******' + chunk);
-});
-fileReadStream.on('data', (chunk) => {
-    console.log('******' + `${++count} 接收到：${chunk.length}`);
-});
+        var fileReadStream = fs.createReadStream('data.json');
+        var count = 0;
+        fileReadStream.once('data', (chunk) => {
+            console.log('******' + chunk);
+        });
+        fileReadStream.on('data', (chunk) => {
+            console.log('******' + `${++count} 接收到：${chunk.length}`);
+        });
 // 🍌🍌🍌 可读流的事件<br />
         //
 // 🍌🍌🍌 可写的文件流<br />
@@ -265,22 +265,96 @@ fileReadStream.on('data', (chunk) => {
 // 🎂🎂🎂🎂🎂🎂🎂🎂🎂 06 MongoDB 🎂🎂🎂🎂🎂🎂🎂🎂🎂<br />
 // 🍠 【准备】<br />
 // 🎂🎂🎂 创建一个 mongo 容器<br />
+        // 在任何想使用MongoDB的地方安装
+        // 使用docker mongo镜像 创建在后台运行的容器
+            // http://www.daocloud.io/
+            // docker run -d --name myMongo mongo
+        // 进入容器里面，MongoDB数据库已经启动
+            // docker exec -it myMongo bash
 // 🎂🎂🎂 与数据库交互的界面：mongo shell<br />
+        // 进入 mongo shell
+            // mongo
+        // 帮助
+            // help
+        // 当前使用的数据库
+            // db
+        // 切换数据库
+            // use chenfeng-mongo
+            // db
+        // 退出
+            // exit
 // 🍠 【CRUD】<br />
 // 🎂🎂🎂 插入文档：insert<br />
+        db.albums.insertOne({title: '双节棍'})
+        db.albums.find()
+        db.albums.insertMany([{title: '夜曲'}, {title: '星晴'}])
+        db.albums.find()
+        db.albums.insert([{title: '七里香'}, {title: '菊花台'}])
+        db.albums.find()
 // 🎂🎂🎂 修改文档：update<br />
+        db.albums.updateMany(
+            {},
+            {
+                $set: {artist: 'Jay Chou'}
+            }
+        )
+        db.albums.find()
+        db.albums.updateOne(
+            {title: '不再犹豫'},
+            {
+                $set: {artist: 'Beyond'}
+            }
+        )
+        db.albums.find()
 // 🎂🎂🎂 删除文档：remove<br />
+        db.albums.find()
+        db.albums.deleteOne({atrist: 'Beyond'})
+        db.albums.find()
+        db.albums.remove({atrist: 'Beyond'}, true)
+        db.albums.find()
+        db.albums.deleteMany({atrist: 'Beyond'})
+        db.albums.find()
+        db.albums.remove({})
+        db.albums.find()
 // 🍠 【查询】<br />
 // 🎂🎂🎂 查询文档<br />
+        // 使用PostMan请求数据
+        // http://api.douban.com/v2/movie/top250
+        db.movies.insertMany(...)
+        db.movies.find()
 // 🎂🎂🎂 查询文档并限制返回的字段<br />
+        // 返回year为1994的电影，返回结果只包含title和year这两个字段
+        db.movies.find({year: '1994'}, {title: 1, year: 1})
+        // 返回year为1994的电影，返回结果只包含title和year这两个字段，不包含_id这个字段
+        db.movies.find({year: '1994'}, {title: 1, year: 1, _id: 0})
 // 🎂🎂🎂 指针方法：跳过, 限制, 排序<br />
+        db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0})
+        // 返回的数量
+        db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).size()
+        // 跳过前10
+        db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).skip(10)
+        // 限制返回个数为3
+        db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).limit(3)
+        // 按照升序排列
+        db.movies.find({}, {title: 1, year: 1, 'rating.average': 1, _id: 0}).sort({'rating.average': 1})
 // 🎂🎂🎂 查询操作符<br />
+        // 大于9.5
+        db.movies.find({'rating.average': {$gt: 9.5}}, {title: 1, 'rating.average': 1, _id: 0})
+        // 小于9.5
+        db.movies.find({'rating.average': {$lt: 9.5}}, {title: 1, 'rating.average': 1, _id: 0})
 // 🎂🎂🎂 查询操作符：包含与不包含 - $in 与 $nin<br />
-//
+        // 包含
+        db.movies.find({genres: {$in: ['犯罪']}}, {title: 1, genres: 1, _id: 0})
+        db.movies.find({genres: {$in: ['犯罪', '剧情']}}, {title: 1, genres: 1, _id: 0})
+        // 不包含
+        db.movies.find({genres: {$nin: ['犯罪', '剧情']}}, {title: 1, genres: 1, _id: 0})
 // ☕️☕️☕️☕️☕️☕️☕️☕️☕️ 07 Node.js 与 MongoDB ☕️☕️☕️☕️☕️☕️☕️☕️☕️<br />
 // 🍠 【准备】<br />
 // ☕️☕️☕️ 安装 MongoDB<br />
+        // brew install mongodb
 // ☕️☕️☕️ MongoDB 图形化管理软件 Robo 3t<br />
+        // brew search robo
+        // brew install caskroom/cask/robo-3t
 // 🍠 【Mongoose】<br />
 // ☕️☕️☕️ Mongoose<br />
 // ☕️☕️☕️ 连接到 MongoDB 数据库<br />
