@@ -351,17 +351,40 @@
 // ☕️☕️☕️☕️☕️☕️☕️☕️☕️ 07 Node.js 与 MongoDB ☕️☕️☕️☕️☕️☕️☕️☕️☕️<br />
 // 🍠 【准备】<br />
 // ☕️☕️☕️ 安装 MongoDB<br />
-        // brew install mongodb
+        // 安装
+            // brew install mongodb
+        // 启动
+            // mongod
+            // sudo mkdir -p /data/db
+            // sudo chown -R howbuy2017 /data/db
+            // mongod
 // ☕️☕️☕️ MongoDB 图形化管理软件 Robo 3t<br />
         // brew search robo
         // brew install caskroom/cask/robo-3t
 // 🍠 【Mongoose】<br />
 // ☕️☕️☕️ Mongoose<br />
+        // 用代码控制数据库
+        // 使用Mongoose，将node于mongo联系起来
+            // yarn add mongoose (必须sudo)
 // ☕️☕️☕️ 连接到 MongoDB 数据库<br />
+        // 确定mongodb已经运行
+            // mongod
+        // 创建与编辑 database.js
+        // node index_db.js
 // ☕️☕️☕️ Schema 与数据模型<br />
+        // 集合
+        // 数据表
+        // 文档 记录
+        // 描述这些文档的 叫Schema(记录的值、类型、最值)
+        // 基于Schema，可以创建Model
+        // 有了Model，可以使用模型方法去处理，对应集合中的文档
+        // 创建与编辑 event.js
 // 🍠 【CRUD】<br />
 // ☕️☕️☕️ 使用模型把数据保存到数据库里<br />
+        // 创建与编辑 index_model.js
+        // node index_model.js
 // ☕️☕️☕️ 读取数据库里的数据<br />
+        // 
 // ☕️☕️☕️ insertMany：同时插入多个文档<br />
 // ☕️☕️☕️ 查询<br />
 // ☕️☕️☕️ 更新<br />

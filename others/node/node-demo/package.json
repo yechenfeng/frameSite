@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-      "start": "./node_modules/.bin/nodemon index.js"
+    "start": "./node_modules/.bin/nodemon index.js"
   },
   "dependencies": {
+    "mongoose": "^4.12.2",
     "request": "^2.81.0"
   },
   "devDependencies": {
