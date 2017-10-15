@@ -384,14 +384,29 @@
         // 创建与编辑 index_model.js
         // node index_model.js
 // ☕️☕️☕️ 读取数据库里的数据<br />
-        // 
+        // 创建并编辑create.js
+        // 创建并编辑read.js
+        // node database/read.js
 // ☕️☕️☕️ insertMany：同时插入多个文档<br />
+        // 创建并编辑SimpleEvents.json (注意需要符合models/events.js里面的值类型规则)
+        // 创建并编辑SimpleEvents.js
+        // node database/seeds/SimpleEvents.js
+        // node database/read.js
 // ☕️☕️☕️ 查询<br />
+        // 编辑read.js
+        // find
+        // findOne
+        // findById
+        // node database/read.js
 // ☕️☕️☕️ 更新<br />
+        // 创建并编辑update.js
+        // node database/read.js
 // ☕️☕️☕️ 删除<br />
-//
+        // 创建并编辑delete.js
+        // node database/read.js
 // 🍵🍵🍵🍵🍵🍵🍵🍵🍵 08 Node.js：REST 接口 🍵🍵🍵🍵🍵🍵🍵🍵🍵<br />
 // 🍠 【准备】<br />
+        // yarn add express
 // 🍵🍵🍵 用 Express 创建服务器<br />
 // 🍠 【路由】<br />
 // 🍵🍵🍵 路由 Routes<br />
