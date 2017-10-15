@@ -408,16 +408,38 @@
 // 🍠 【准备】<br />
         // yarn add express
 // 🍵🍵🍵 用 Express 创建服务器<br />
+        // 创建并编辑server.js
+        // 应用有变化的时候，会自动重启
+            // ./node_modules/.bin/nodemon server.js
 // 🍠 【路由】<br />
 // 🍵🍵🍵 路由 Routes<br />
+        // 创建并编辑eventRouter.js
+        // 编辑server.js
 // 🍵🍵🍵 控制器 Controllers<br />
+        // 创建并编辑EventController.js
+        // 编辑eventRouter.js
 // 🍠 【REST】<br />
 // 🍵🍵🍵 资源列表接口：GET api/events<br />
+        // 编辑EventController.js
+        // 使用Event.find()导入mongo中所有的数据
 // 🍵🍵🍵 创建资源接口：POST api/events<br />
+        // 编辑eventRouter.js 添加post到store
+        // 编辑EventController.js 添加store方法
+        // yarn add body-parser
+        // 编辑server.js
+        // brew cask install insomnia
+        // 在insomnia模拟post请求 or 使用postman
+        // const event
+        // event.save() 保存请求数据到mongo
 // 🍵🍵🍵 单个资源接口：GET api/events/:id<br />
+        // 编辑eventRouter.js 添加路由 /events/:id
+        // 编辑EventController.js 添加show方法
 // 🍵🍵🍵 单个资源更新接口：PATCH api/events/:id<br />
+        // 编辑eventRouter.js 添加patch
+        // 编辑EventController.js 添加update方法
 // 🍵🍵🍵 单个资源删除接口：DELETE api/events/:id<br />
-//
+        // 编辑eventRouter.js 添加delete
+        // 编辑EventController.js 添加destory方法
 // 😊😊😊😊😊😊😊😊😊 09 Socket.io 😊😊😊😊😊😊😊😊😊<br />
 // 😊😊😊 准备<br />
 // 😊😊😊 视图<br />

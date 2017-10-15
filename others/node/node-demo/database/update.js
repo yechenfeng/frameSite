@@ -1,7 +1,7 @@
 /*
  *  更新data
 */
-const Event = require('../models/event.js')
+const Event = require('../models/event')
 
 let id = '59e2fadb31ab229561bc1ff4';
 let body = {

@@ -1,7 +1,7 @@
 /*
  *  保存data到数据库 入口 => models/event.js => config/database.js
 */
-const Event = require('../models/event.js')
+const Event = require('../models/event')
 const event1 = new Event({
     title: 'node and mongo'
 })

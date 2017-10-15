@@ -1,7 +1,7 @@
 /*
  *  从数据库提取data
 */
-const Event = require('../models/event.js')
+const Event = require('../models/event')
 Event.find()
     .then(documents => console.log('\nfind: 所有的文档\n', documents))
 

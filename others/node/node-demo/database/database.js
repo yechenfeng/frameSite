@@ -11,7 +11,7 @@ mongoose.Promise = global.Promise
 
 mongoose
     .connect(uri, options)
-    .then(db => console.log('😊连接数据库成功~'))
-    .catch(error => console.log('😒连接数据库失败！'))
+    .then(db => console.log('😊  连接 好买cgi-mock 数据库成功~'))
+    .catch(error => console.log('😒  连接 好买cgi-mock 数据库失败！'))
 
 module.exports = mongoose
