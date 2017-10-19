@@ -252,7 +252,28 @@
 // 🧀🧀🧀🧀🧀🧀🧀🧀🧀 05 Express 🧀🧀🧀🧀🧀🧀🧀🧀🧀<br />
 // 🍠 【准备】<br />
 // 🧀🧀🧀 准备<br />
+        // 本目录创建文件夹TECH_Express
+        // 创建空的配置文件
+            // npm init -y
+            // or(用yarn的方式更好，出错概率较低)
+            // yarn init
+        // 安装nodemon babel-cli babel-preset-es2015 babel-preset-stage-0
+            // npm install nodemon babel-cli babel-preset-es2015 babel-preset-stage-0 -y
+            // or(用yarn的方式更好，出错概率较低)
+            // yarn add nodemon
+            // yarn add babel-cli
+            // yarn add babel-preset-es2015
+            // yarn add babel-preset-stage-0
+        // 打开项目
+        // 编辑package.json
+            // ./node_modules/.bin/nodemon --exec babel-node index.js
+            // or
+            // npm start
 // 🧀🧀🧀 安装 express<br />
+        // npm view express versions --json
+        // npm install 5.0.0-alpha.6 --save
+        // or
+        // yarn add express (这是安装非alpha版本)
 // 🍠 【Express 应用】<br />
 // 🧀🧀🧀 创建一个 Express 应用<br />
 // 🧀🧀🧀 使用 Middleware：中间件<br />
@@ -442,6 +463,7 @@
         // 编辑EventController.js 添加destory方法
 // 😊😊😊😊😊😊😊😊😊 09 Socket.io 😊😊😊😊😊😊😊😊😊<br />
 // 😊😊😊 准备<br />
+        //
 // 😊😊😊 视图<br />
 // 😊😊😊 集成 Socket.IO<br />
 // 😊😊😊 连接与断开<br />
