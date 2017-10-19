@@ -18,6 +18,15 @@
         8-7 响应式网页设计
         8-8 SASS 基础
 */
+import express from 'express'
+const app = express()
+app.get('/', (request, response) => {
+    response.send('hello javascript 20171019')
+})
+app.listen(1018, () => {
+    console.log('监听javascript服务端口：1019')
+})
+
 // 🍎🍎🍎🍎🍎🍎🍎🍎🍎 1 JAVASCRIPT 基础 🍎🍎🍎🍎🍎🍎🍎🍎🍎<br />
 // 🍎介绍
 //     在网页中嵌入脚本代码的方法
