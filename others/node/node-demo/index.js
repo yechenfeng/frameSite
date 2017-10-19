@@ -270,19 +270,31 @@
             // or
             // npm start
 // 🧀🧀🧀 安装 express<br />
-        // npm view express versions --json
-        // npm install 5.0.0-alpha.6 --save
-        // or
-        // yarn add express (这是安装非alpha版本)
+        // 查看express版本
+            // npm view express versions --json
+        // 安装express
+            // npm install 5.0.0-alpha.6 --save
+            // or
+            // yarn add express (这是安装非alpha版本)
 // 🍠 【Express 应用】<br />
 // 🧀🧀🧀 创建一个 Express 应用<br />
+        // 创建与编辑index.js
 // 🧀🧀🧀 使用 Middleware：中间件<br />
+        // npm install morgan --save
+        // yarn add morgan
+        // 编辑index.js
+            // morgan是记录请求日志的中间件
+            // import morgan from 'morgan'
+            // app.use(morgan('dev'))
 // 🧀🧀🧀 使用 Views：视图<br />
+        // 
 // 🧀🧀🧀 定义 Route：路由<br />
+        //
 // 🍠 【评论】<br />
 // 🧀🧀🧀 发表评论<br />
+        //
 // 🧀🧀🧀 显示评论列表<br />
-//
+        //
 // 🎂🎂🎂🎂🎂🎂🎂🎂🎂 06 MongoDB 🎂🎂🎂🎂🎂🎂🎂🎂🎂<br />
 // 🍠 【准备】<br />
 // 🎂🎂🎂 创建一个 mongo 容器<br />
