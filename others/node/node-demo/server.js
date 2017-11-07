@@ -17,4 +17,5 @@ app.get('/', (request, response) => {
     response.send('hello cgi-mock ~') // TODO
 })
 
+// http://localhost:8888/cgi-mock/
 app.listen(port, () => console.log(`监听端口： ${port}`))
