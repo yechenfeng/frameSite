@@ -9,6 +9,7 @@ import morgan from 'morgan'
 const app = express()
 
 app.use(morgan('dev'))
+app.use(express.static('./'))
 
 app.get('/', (request, response) => {
     response.send('hello 20171025')

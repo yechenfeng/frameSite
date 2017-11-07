@@ -19,9 +19,12 @@
         8-8 SASS 基础
 */
 // 🍎🍎🍎🍎🍎🍎🍎🍎🍎 1 JAVASCRIPT 基础 🍎🍎🍎🍎🍎🍎🍎🍎🍎<br />
-// 🍎介绍
+//     介绍
+        //     web开发必学：html + css + js
 //     在网页中嵌入脚本代码的方法
+        //     <script src="./index.js" type="text/javascript"></script>
 //     注释 - 说明你的意图
+        //     
 // 🍎数据
 //     变量 - 给东西起个名字
 //     数据的类型 - 数字，文字，真与假 ...
