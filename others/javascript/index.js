@@ -24,26 +24,120 @@
 //     在网页中嵌入脚本代码的方法
         //     <script src="./index.js" type="text/javascript"></script>
 //     注释 - 说明你的意图
-        //     
+        //
 // 🍎数据
 //     变量 - 给东西起个名字
+        //     区分大小写
+            var band, Band;
+        //     CamelCase
 //     数据的类型 - 数字，文字，真与假 ...
+            var fullName; // undefined
+            undefined + 2 // NaN
+            var fullName, weight = 160; // string number
+            var firstName = "chenfeng" , lastName = "ye"; //  string
+            160 + ".5斤" // string
+            parseInt('1.5斤') // 1
+            parseFloat('1.5斤') // 1.5
 //     文本字符串的处理
+            var words = "打工仔陈峰是个前端工程师"; // undefined
+            words.length // 12
+            words.charAt(0) // "打"
+            words.charAt(words.length - 1) // "师"
+            words.indexOf("工") // 1
+            words.lastIndexOf("工") // 9
+            words.substring(0,3) // "打工仔"
+            words.replace("打工仔", "程序猿") // "程序猿陈峰是个前端工程师"
+            words.split("是个") // (2) ["打工仔陈峰", "前端工程师"]0: "打工仔陈峰"1: "前端工程师"length: 2__proto__: Array(0)
+            var newWords = words.split("是个") // undefined
+            newWords // (2) ["打工仔陈峰", "前端工程师"]
+            newWords[0] // "打工仔陈峰"
+            newWords[1] // "前端工程师"
 //     Array 数组 - 把数据有序地放在大盒子里装着
+            var trackCD1 = []; // undefined
+            typeof trackCD1 // "object"
+            trackCD1 // []
+            trackCD1 = ["双截棍", "菊花台", "七里香"] // (3) ["双截棍", "菊花台", "七里香"]
+            trackCD1.length // 3
+            trackCD1[0] // "双截棍"
+            trackCD1[3] = "烟花易冷" // "烟花易冷"
+            trackCD1 // (4) ["双截棍", "菊花台", "七里香", "烟花易冷"]0: "双截棍"1: "菊花台"2: "七里香"3: "烟花易冷"4: "牛仔很忙"length: 5__proto__: Array(0)
+            trackCD1.push("牛仔很忙") // 5
+            trackCD1 // (5) ["双截棍", "菊花台", "七里香", "烟花易冷", "牛仔很忙"]
+            trackCD1.pop() // "牛仔很忙"
+            trackCD1 // (4) ["双截棍", "菊花台", "七里香", "烟花易冷"]
+            trackCD1.shift() // "双截棍"
+            trackCD1 // (3) ["菊花台", "七里香", "烟花易冷"]
+            delete trackCD1[2] // true
+            trackCD1 // (3) ["菊花台", "七里香", empty]
+            trackCD1.splice(2) // [empty]
+            trackCD1 // (2) ["菊花台", "七里香"]
+            var trackCD2 = ["夜曲", "星晴"]; // undefined
+            var track = trackCD1.concat(trackCD2) // undefined
+            track // (4) ["菊花台", "七里香", "夜曲", "星晴"]
 // 🍎流程控制
 //     if - 先判断条件的对与错然后再决定要做的事
+            // if (true) {
+            //
+            // } else {
+            //
+            // }
 //     switch - 先判断条件的对与错然后再决定要做的事
+            // switch (newWords) {
+            //     case newWords:
+            //
+            //         break;
+            //     default:
+            //
+            // }
 //     while 循环 - 重复地去做要做的事
+            // while (true) {
+            //
+            // }
 //     for 循环 - 重复地去做要做的事
+            // for (var i = 0; i < track.length; i++) {
+            //     track[i]
+            // }
 // 🍎函数
 //     function 函数 - 一块可以执行的代码
+            function functionName (param1, param2) {
+
+            }
 //     定义一个函数
+            function alertMessge (message) {
+                alert(message);
+            }
 //     函数表达式
+            var alertMessageBDS = function (message) {
+                alert(message);
+            }
 //     变量的范围
+        //     函数以外：全局变量
+        //     函数以内：内部变量
+            var message = "全局变量";
+            function alertMessgeBL () {
+                alert(message);
+                var messageJB = "局部变量";
+            }
+            alert(messageJB);
 //     Object 对象 - 能存数据 能做事
+        //     对象
+            //     对象属性 - 变量
+            //     对象方法 - 行为
+            //     not include [number] [string] [boolean] [null] [undefined]
+            typeof NaN // "number"
 // 🍎对象
 //     创建一个对象
+            var beyond = {}; // undefined
+            beyond.formIn = "1983"; // "1983"
+            beyond["foundedIn"] = "香港"; // "香港"
+            beyond // {formIn: "1983", foundedIn: "香港"}
+
+            var beyond = {formIn: "1983", foundedIn: "香港"}; // undefined
+            beyond // {formIn: "1983", foundedIn: "香港"}
+            beyond.formIn // "1983"
+            beyond["foundedIn"] // "香港"
 //     对象里的数组
+
 //     更新与删除对象里的属性
 //     为对象添加方法
 //     循环输出对象里的属性

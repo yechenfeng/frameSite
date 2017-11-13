@@ -6,8 +6,8 @@ var app_xuanran = new Vue({
         message: 'hello'
     }
 })
-    // app.message  =>   "hello"
-    // app.message = 'hola' =>  "hola"
+    // app_xuanran.message  =>   "hello"
+    // app_xuanran.message = 'hola' =>  "hola"
 // 🍎🍎🍎 绑定元素属性
 var app_bind = new Vue({
     el: '#app_bind',
@@ -16,8 +16,8 @@ var app_bind = new Vue({
         title: 'hello'
     }
 })
-    // app.title    =>   "hello"
-    // app.title = 'hola'   =>   "hola"
+    // app_bind.title    =>   "hello"
+    // app_bind.title = 'hola'   =>   "hola"
 // 🍎🍎🍎 条件
 var app_tiaojian = new Vue({
     el: '#app_if',
@@ -27,8 +27,8 @@ var app_tiaojian = new Vue({
         visible: true
     }
 })
-    // app.visible    =>  true
-    // app.visible = false  =>  false
+    // app_tiaojian.visible    =>  true
+    // app_tiaojian.visible = false  =>  false
 // 🍎🍎🍎 用户输入
 var app = new Vue({
     el: '#app_input',
