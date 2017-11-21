@@ -24,7 +24,6 @@
 //     在网页中嵌入脚本代码的方法
         //     <script src="./index.js" type="text/javascript"></script>
 //     注释 - 说明你的意图
-        //
 // 🍎数据
 //     变量 - 给东西起个名字
         //     区分大小写
@@ -118,7 +117,7 @@
                 alert(message);
                 var messageJB = "局部变量";
             }
-            alert(messageJB);
+            // alert(messageJB); // Uncaught ReferenceError: messageJB is not defined
 //     Object 对象 - 能存数据 能做事
         //     对象
             //     对象属性 - 变量
@@ -137,38 +136,167 @@
             beyond.formIn // "1983"
             beyond["foundedIn"] // "香港"
 //     对象里的数组
-
+            var beyond = {
+                formIn: "1983",
+                foundedIn: "香港",
+                artist: [
+                    "A",
+                    "B",
+                    "C",
+                    "D"
+                ]
+            };
+            beyond.artist[0] // "A"
+            beyond.artist[1] // "B"
 //     更新与删除对象里的属性
+            beyond.foundedIn // "香港"
+            beyond.foundedIn = "中国香港" // "中国香港"
+            delete beyond.formIn // true
+            beyond // {foundedIn: "中国香港", artist: Array(4)}
 //     为对象添加方法
+            beyond.showArtist = function () {
+                for (var i = 0; i < this.artist.length; i++) {
+                    console.log(this.artist[i]);
+                }
+            }
+            beyond // {foundedIn: "中国香港", artist: Array(4), showArtist: ƒ}
+            beyond.showArtist() // A B C D
 //     循环输出对象里的属性
+            var property;
+            for (property in beyond) {
+                if (typeof beyond[property] !== "function") { // 输出 属性值非function的 属性值
+                    console.log(beyond[property]);
+                }
+            }
 // 🍎DOM
 //     DOM - 操纵文档的接口
+        //     文档对象模型 Document Object Model
+        //     js可以更改网页 结构、内容、样式
+        //     js操作DOM（接口）
+        //     DOM 是一套规范
+        //     DOM提供另一种方法来表示 存储 操作文档的方法
+        //     用对象来表示文档（属性、方法、时间组织在对象中）
+        //     head body div ul li（都是文档对象中的一部分）
 //     文档树
+        //     document
+            //     html
+                //     head
+                    //     title
+                //     body
+                    //     h1
+                    //     p
 //     获取文档中的元素 getELementById
+            document.getElementById("page-title") // <h1 id="page-title">title</h1>
 //     getElementsByTagName
+            document.getElementsByTagName("li") // (4) [li, li, li, li]
 //     querySelector 与 querySelectorAll
+        //     querySelector    返回第一个
+            document.querySelector(".art-list li") // <li>​A​</li>​
+        //     querySelectorAll 返回所有
+            document.querySelectorAll(".art-list li") // (4) [li, li, li, li]
 //     访问元素的属性
+            var pageTitle = document.getElementById("page-title");
+            pageTitle.nodeName // "H1"
+            pageTitle.innerText // "title"
+            pageTitle.parentNode // <div>​…​</div>​
+            pageTitle.nextElementSibling // <ul class=​"art-list">​…​</ul>​
+            var artists = document.querySelector(".art-list");
+            artists.childNodes // (9) [text, li, text, li, text, li, text, li, text]
+            artists.childElementCount // 4
+            artists.firstElementChild // <li>​A​</li>​
+            artists.lastElementChild // <li>​D​</li>​
+            artists.firstElementChild.innerText // "A"
+            artists.firstElementChild.innerText = "A+" // "A+"
 //     在文档中创建并插入新的节点
+            var newMember = document.createElement("li") // undefined
+            var newMemberText = document.createTextNode("E") // undefined
+            newMember.appendChild(newMemberText) // "E"
+            document.querySelector(".art-list").appendChild(newMember) // <li>​E​</li>​
 //     insertBefore - 在指定位置插入节点
+            artists.insertBefore(newMember, artists.firstChild) // <li>​E​</li>​
 // 🍎事件
 //     Event - 处理发生的事情
+        //     事件
+            //     执行动作 通过事件处理程序
 //     处理事件的方法
+        //     <a href="#" onclick="alert('你点击了我');" onmouseover="console.log('你来了');" onmouseout="console.log('你离开了');">点我</a>
 //     用对象的事件处理程序处理发生的事件
+            var btn = document.querySelector(".btn");
+            btn.onclick = function () {
+                alert('你点击了我');
+            }
+        //     window.onload
+            //     浏览器加载 样式、资源都显示和下载了，才触发onload
+            window.onload = function () {
+                var btn = document.querySelector(".btn");
+                btn.onclick = function () {
+                    alert('你点击了我');
+                }
+            }
 //     addEventListener - 为对象绑定事件
+            btn.addEventListener("click", showMessage, false);
+            function showMessage (event) {
+                console.log("showMessage, 你点击了我");
+                console.log(event); // 输出事件的对象：MouseEvent {isTrusted: true, screenX: -1861, screenY: 56, clientX: 61, clientY: 229, …}
+                event.stopPropagation();
+            }
+            function showMessage2 (event) {
+                console.log("showMessage2, 你点击了我");
+                console.log(event); // 输出事件的对象：MouseEvent {isTrusted: true, screenX: -1861, screenY: 56, clientX: 61, clientY: 229, …}
+            }
 //     事件的传播
+            var listGroup = document.querySelector(".list-group");
+            listGroup.addEventListener("click", showMessage, true); // false（冒泡）-先执行showMessage2-li，true（捕获）-先执行showMessage-ul，
+        //     冒泡传播：从下到上、从里到外
+        //     捕获传播：从外向内
 //     更改事件传播方式
+        //     更改外层事件的 第三个参数 false => true
+            //     冒泡传播 => 捕获传播
+            var item1 = document.getElementById("item1");
+            item1.addEventListener("click", showMessage2, false);
 //     停止传播事件
+        //     event.stopPropagation();
+        //     目前事件是从外向内传播，只执行了showMessage-ul，使用event.stopPropagation()阻止了事件的传播，不会执行showMessage2-li
 // 🍌🍌🍌🍌🍌🍌🍌🍌🍌 2 JQUERY 基础 🍌🍌🍌🍌🍌🍌🍌🍌🍌<br />
 //     介绍
+        //     选择特定元素、设置属性、处理事件、使用动画
 // 🍌准备
 //     准备
+        //     下载、导入
 //     当页面载入以后
+        //     load
+            //     所有资源准备好，才执行
+        //     ready
+            //     所有结构准备好，就执行
+            $(document).ready(function () { // 易读
+                console.log("准备好了~");
+            });
+            $(function () { // 简单
+                console.log("准备好了~");
+            });
 //     jQuery 函数
+        //     jQuery()
+        //     $()
+            $('.list-group li')
+            $(document)
+            $('<h1>jquery</h1>')
 //     jQuery 方法
+        //     链式调用
+            $('.list-group li').attr('alt', 'tag').addClass('class_name')
 // 🍌选择器
 //     选择器
+        //     css3选择器
 //     基本的选择器
+            $('.list-group li').length // 5
+            $('.list-group li').size() // 5
 //     选择器里的过滤
+            $('.list-group li:first').html('first')
+            $('.list-group li:last').html('last')
+            $('.list-group li:odd').html('odd')
+            // $('.list-group li:even').html('even')
+            $('.list-group li:eq(2)').html('eq(2)')
+            $('.list-group li:lt(2)').html('lt(2)') // 小于
+            $('.list-group li:gt(2)').html('gt(2)') // 大于
 //     选择器里使用元素的属性
 //     选择表单元素
 //     子元素选择器 - :first-child, :last-child
