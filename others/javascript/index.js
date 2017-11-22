@@ -298,22 +298,87 @@
             $('.list-group li:lt(2)').html('lt(2)') // 小于
             $('.list-group li:gt(2)').html('gt(2)') // 大于
 //     选择器里使用元素的属性
+            $('[data-tag]')
+            $('li[data-tag]')
+            $('li[data-tag=tag1]')
+            $('li[data-tag~=tag1]')
+            $('li[data-tag*=tag1]')
 //     选择表单元素
+            $(':input') // 包含以下类型
+                $(':button')
+                $(':submit')
+                $(':reset')
+                $(':password')
+                $(':file')
+                $(':checkbox') // 所有复选框
+                $(':radio')
+                $(':checked') // 勾选的复选框
+                $(':focus') // 焦点
+                $(':disabled') // 禁用
+                $(':enabled') // 启用
 //     子元素选择器 - :first-child, :last-child
+        //     first 第一个结果
+        //     first-child 第一个子元素(有多个结果) - 属于元素的第一个子元素，两个平行的元素只计算一个
+            $('img:first-child') // (4) [img, img, img, img, prevObject: init(1), context: document, selector: "img:first-child"]
+            $('img:last-child') // (3) [img, img, img, prevObject: init(1), context: document, selector: "img:last-child"]
 //     子元素选择器 - :nth-child
+        //     索引号是从1开始的
+            $('.list-group li:nth-child(1)') // [li.class_name, prevObject: init(1), context: document, selector: ".list-group li:nth-child(1)"]
+            $('.list-group li:nth-child(odd)') // 奇数 li
+            $('.list-group li:nth-child(even)') // 偶数 li
+            $('.list-group li:nth-child(2n)') // 2 4 6 ...
+            $('.list-group li:nth-last-child(2n)') // ... 6 4 2
 //     内容过滤
+            $('li:contains("2")') // 包含文字“2”的li元素
 //     过滤的方法
+            $('li img')
+            $(':input').eq(0) // 第一个input
+            $(':input').eq(-1) // 最后一个input
+            $(':input').first() // 第一个input
+            $(':input').last() // 最后一个input
+            $(':input').slice(1,2) // 第二个input
 //     使用文档树形结构里的关系过滤
+            $('#ul-2')
+            $('#ul-2').children()
+            $('#ul-2').children('.item1')
+            $('#ul-2').parent()
+            $('#ul-2').next()
+            $('#ul-2').prev()
+            $('#ul-2').siblings() // 所有兄弟
+            $('#ul-2').nextAll() // 后面兄弟
+            $('#ul-2').prevAll() // 前面兄弟
 // 🍌属性
 //     操纵元素的属性
+            $('.list-group li').attr('alt', 'tag')
 //     设置与移除元素属性的方法
+        //     获取attr的值，只能获取结果中的第一个值，需要配合 map 或 each 进行使用
+            $('.list-group li').attr('alt', 'tag')
+            $('.list-group li').removeAttr('alt')
 //     添加，移除，切换 CSS 类
+            $('.list-group li').addClass('class_name')
+            $('.list-group li').removeClass('class name')
+            $('.list-group li').toggleClass('selector')
 //     元素的宽度和高度属性
+            $('#item1').width()
+            $('#item1').innerWidth()
+            $('#item1').outerWidth()
+            $('#item1').height(133)
+            $('#item1').innerHeight() // 包括 padding + element = innerHeight
+            $('#item1').outerHeight() // 包括 padding + element + border = outerHeight
 //     设置 CSS 属性
+            $('#item1').css('width')
+            $('#item1').css('width', '166')
+            $('#item1').css({width: '166', height: '133'})
 //     元素的偏移 - offset
+            $('#item1').offset() // {top: 109.875, left: 48} - 元素相对于文档的位置（元素的最顶端到文档的顶端）
 //     元素的位置 - position
+            $('#item1').position() // {top: 22, left: 40} - 元素相对于用来定位的父元素ul(style="position:relative;")的位置
 // 🍌DOM
 //     包装 - wrap
+            $('.album-wrap').wrapInner('<div><div>') // 单独包装
+            $('.album-wrap').wrapAll('<div><div>') // 外层包装
+            $('.album-wrap').unwrap()
+            $('.album-wrap img').unwrap()
 //     内部追加 - append, prepend
 //     外部追加 - after, before
 //     移除 - remove, empty

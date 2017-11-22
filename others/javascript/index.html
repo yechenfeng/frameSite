@@ -10,16 +10,67 @@
     <div>
         <h1 id="page-title">title</h1>
 
-        <ul class="art-list list-group">
-            <li id="item1">A</li>
-            <li>B</li>
-            <li>C</li>
-            <li>D</li>
+        <ul class="art-list list-group" style="position:relative;">
+            <li id="item1" data-tag="tag1">A</li>
+            <li data-tag="tag2">B</li>
+            <li data-tag="tag3">C</li>
+            <li data-tag="tag4">D</li>
         </ul>
 
         <a href="#" onclick="alert('你点击了我');" onmouseover="console.log('你来了');" onmouseout="console.log('你离开了');">点我</a>
 
         <a href="#" class="btn">点我</a>
+
+        <input type="text" name="" value="">
+        <input type="submit" name="" value="">
+        <button type="reset" name="button"></button>
+        <button type="submit" name="button"></button>
+
+        <ul id="ul-2">
+            <li class="item1">
+                A
+                <img src="" alt="">
+            </li>
+            <li data-tag="tag2">
+                B
+                <img src="" alt="">
+            </li>
+            <li data-tag="tag3">
+                C
+                <img src="" alt="">
+            </li>
+            <li data-tag="tag4">
+                D
+                <img src="" alt="">
+                <img src="" alt="">
+                <p>
+                </p>
+            </li>
+        </ul>
+
+        <div class="row">
+            <ul class="row">
+                <li class="col-xs-6 album-wrap">
+                    <img src="../" alt="atlas">
+                    <h6>Atlas</h6>
+                </li>
+                <li class="col-xs-6 album-wrap">
+                    <img src="../" alt="christmas_lights">
+                    <h6>Christmas Lights</h6>
+                </li>
+
+                <li class="col-xs-6 album-wrap">
+                    <img src="../" alt="mylo_xyloto">
+                    <h6>Mylo Xyloto</h6>
+                </li>
+
+                <li class="col-xs-6 album-wrap">
+                    <img src="../" alt="paradise">
+                    <h6>Paradise</h6>
+                </li>
+
+            </ul>
+        </div>
 
     </div>
     <script src="./jquery.min.1.7.js" type="text/javascript"></script>
