@@ -375,22 +375,74 @@
             $('#item1').position() // {top: 22, left: 40} - 元素相对于用来定位的父元素ul(style="position:relative;")的位置
 // 🍌DOM
 //     包装 - wrap
-            $('.album-wrap').wrapInner('<div><div>') // 单独包装
-            $('.album-wrap').wrapAll('<div><div>') // 外层包装
-            $('.album-wrap').unwrap()
-            $('.album-wrap img').unwrap()
+            // $("p").wrap("<strong></strong>"); // <strong>p</strong> <strong>p</strong>
+            // $("p").wrapInner("<strong></strong>"); // <p>strong</p> <p>strong</p>
+            // $("p").wrapAll("<strong></strong>"); // <strong>p p</strong>
+            // $('#wrap').unwrap()
+            // $('#wrap div').unwrap()
 //     内部追加 - append, prepend
+            $('#内部追加').append('<h5>append</h5>')
+            $('#内部追加').prepend('<h5>prepend</h5>')
+            $('<h5>appendTo</h5>').appendTo('#内部追加')
+            $('<h5>prependTo</h5>').prependTo('#内部追加')
 //     外部追加 - after, before
+            $('#外部追加').after('<h5>after</h5>')
+            $('#外部追加').before('<h5>before</h5>')
 //     移除 - remove, empty
+            $('#内部追加').empty() // 清空子元素
+            $('#内部追加').remove() // 清空选择的DOM节点
 //     替换 - replaceAll, replaceWith
+            $('#外部追加').replaceWith('<h6>h6</h6>') // 参数-内容
+            $('<h6>h6</h6>').replaceAll('#外部追加') // 参数-目标
 //     克隆 - clone
+            $('#克隆').clone().appendTo('#克隆')
 // 🍌事件
 //     事件
+        //     使用 on 进行绑定很灵活
 //     鼠标事件
+            $(function () {
+                $('#事件').prev().css('display', 'none');
+                $('#事件').click(function () {
+                    $(this).prev().toggle(); // 切换显示与隐藏
+                });
+                $('#事件').dblclick(function () { // 双击
+                    $(this).prev().toggle();
+                });
+                $('#事件').hover(function () { // 鼠标放置(mouseenter)和离开(mouseleave)都会进入
+                    $(this).prev().toggle();
+                });
+            });
 //     键盘输入与表单事件
+        //     focus/blur/change/submit/keydown/keyup/keypress（delete不会触发keypress事件）
 //     键盘输入与表单 - focus, blur
+            $(function () {
+                $('#comment').focus( function() {
+                    $(this).attr('rows', '5');
+                });
+                $('#comment').blur( function() {
+                    if ($(this).val() === '') {
+                        $(this).attr('rows', '2');
+                    }
+                    $('.alert').text('暂停输入').show();
+                });
+            });
 //     键盘输入与表单 - keyup
+            $(function () {
+                $('#comment').keyup( function() {
+                    $('.alert').text('正在输入...').show();
+                });
+            });
 //     键盘输入与表单，change, submit
+            $(function () {
+                $('#notice').change( function() {
+                    if (true) {
+
+                    } else {
+
+                    }
+                    $('.alert').text('正在输入...').show();
+                });
+            });
 //     事件的绑定 - on
 //     事件的取消绑定 - off
 // 🍌效果

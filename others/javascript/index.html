@@ -43,34 +43,43 @@
                 D
                 <img src="" alt="">
                 <img src="" alt="">
-                <p>
-                </p>
             </li>
         </ul>
 
-        <div class="row">
-            <ul class="row">
-                <li class="col-xs-6 album-wrap">
-                    <img src="../" alt="atlas">
-                    <h6>Atlas</h6>
-                </li>
-                <li class="col-xs-6 album-wrap">
-                    <img src="../" alt="christmas_lights">
-                    <h6>Christmas Lights</h6>
-                </li>
+        <p>我是占位置的。</p>
+        <p>我是占位置的。</p>
 
-                <li class="col-xs-6 album-wrap">
-                    <img src="../" alt="mylo_xyloto">
-                    <h6>Mylo Xyloto</h6>
-                </li>
+        <h5 id="内部追加">内部追加</h5>
+        <h5 id="外部追加">外部追加</h5>
 
-                <li class="col-xs-6 album-wrap">
-                    <img src="../" alt="paradise">
-                    <h6>Paradise</h6>
-                </li>
+        <h5 id="克隆">clone</h5>
 
-            </ul>
-        </div>
+        <h5>显示与隐藏</h5>
+        <h5 id="事件">事件</h5>
+
+        <form role="form">
+          <div>
+            <label >评论</label>
+            <div>
+              <textarea id="comment" class="form-control" rows="2" placeholder="内容..."></textarea>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div>
+                <label>
+                  <input id="notice" type="checkbox"> 通知
+                </label>
+              </div>
+              <div class="alert alert-info" style="display:none; margin-top:20px"></div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <button id="submit" type="submit" class="btn btn-default">提交</button>
+            </div>
+          </div>
+        </form>
 
     </div>
     <script src="./jquery.min.1.7.js" type="text/javascript"></script>
