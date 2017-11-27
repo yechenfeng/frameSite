@@ -435,20 +435,70 @@
 //     键盘输入与表单，change, submit
             $(function () {
                 $('#notice').change( function() {
-                    if (true) {
-
+                    if ($(this).prop('checked')) {
+                        $('.alert').text('发送通知').show();
                     } else {
-
+                        $('.alert').text('不发送通知').show();
                     }
-                    $('.alert').text('正在输入...').show();
+                });
+                $('form').submit( function() {
+                    $('.alert').text('正在提交内容...').show();
+                    alert($('#comment').val());
                 });
             });
 //     事件的绑定 - on
+            $('#事件on li').on('click', function () { // 执行多次
+                alert($(this));
+            });
+            $('#事件on li').one('click', function () { // 执行一次
+                alert($(this));
+            });
 //     事件的取消绑定 - off
+            $('.on').on('click', function () { // 开
+                $('#事件on li').on('click', function () {
+                    alert($(this));
+                });
+            });
+            $('.off').on('click', function () { // 关
+                $('#事件on li').off('click');
+            });
 // 🍌效果
 //     逐渐消失与逐渐显示
+            $('.fadeIn').on('click', function () {
+                $('#效果').fadeIn('500');
+            });
+            $('.fadeOut').on('click', function () {
+                $('#效果').fadeOut('slow');
+            });
+            $('.fadeToggle').on('click', function () {
+                $('#效果').fadeToggle('fast');
+            });
 //     动画完成以后的回调函数
+            $('.fadeIn').on('click', function () {
+                $('#效果').fadeIn('500', function() {
+                    alert('done');
+                });
+            });
+            $('.fadeOut').on('click', function () {
+                $('#效果').fadeOut('slow', function() {
+                    alert('done');
+                });
+            });
+            $('.fadeToggle').on('click', function () {
+                $('#效果').fadeToggle('fast', function() {
+                    alert('done');
+                });
+            });
 //     滑动效果与显示或隐藏
+            $('.slideDown').on('click', function () {
+                $('#效果2').slideDown('500');
+            });
+            $('.slideUp').on('click', function () {
+                $('#效果2').slideUp('slow');
+            });
+            $('.slideToggle').on('click', function () {
+                $('#效果2').slideToggle('fast');
+            });
 // 🌰🌰🌰🌰🌰🌰🌰🌰🌰 3 JAVASCRIPT：ES6 新功能 🌰🌰🌰🌰🌰🌰🌰🌰🌰<br />
 // 🌰准备
 //     准备学习：JavaScript（新）
