@@ -57,8 +57,8 @@ var app_xunhuan = new Vue({
     // app_xunhuan.comments.push({content: 'wonderful ~'})  =>  4
 // 🍎🍎🍎 组件
 Vue.component('component_comment', {
-    props: ['comment'],
-    template: '<li>{{ comment.content }}</li>'
+    props: ['props'],
+    template: '<li>{{ props.content }}</li>'
 })
 var app_zujian = new Vue({
     el: '#app_zujian',

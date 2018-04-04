@@ -54,5 +54,8 @@
     react-redux-form
         表单提交相关扩展
     (箭头Function) 优先于 (ES6 Class) 优先于 (React.createClass)
+
+    yarn add redux-devtools-extension
+
 * 😊 8-1 课程小结
 */
